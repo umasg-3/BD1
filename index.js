@@ -20,7 +20,7 @@ let loyatyRate = 2;
 
 function getCartTotal(newItemPrice, cartTotalto) {
   let result = newItemPrice + cartTotalto;
-  return 'Total cart value is ' +result.toString();
+  return result.toString();
 }
 
 // Calculate the total price of items in the cart
@@ -39,9 +39,9 @@ function getMembershipDiscount(cartTotal, isMember) {
   if (isMember) {
     let membershipDiscountValue = cartTotal / discountPercentage;
     let finalPrice = cartTotal - membershipDiscountValue;
-    return 'Total price is  ' +finalPrice.toString();
+    return finalPrice.toString();
   } else {
-    return 'Total price is  ' +cartTotal;
+    return cartTotal;
   }
 }
 
@@ -59,7 +59,7 @@ app.get('/membership-discount', (req, res) => {
 
 function getCalculatedTax(cartTotal) {
   let result = (cartTotal * taxRate) / 100;
-  return 'Total cart value is ' +result.toString();
+  return result.toString();
 }
 
 
@@ -79,11 +79,11 @@ function getEstimateDelivery(shippingMethod, distance) {
   let result;
   if (shippingMethod == 'standard') {
     result = distance / 50;
-    return 'Days to deliver is ' +result.toString();
+    return result.toString();
   }
   else if (shippingMethod == 'express') {
     result = distance / 100;
-    return 'Days to deliver is ' +result.toString();
+    return result.toString();
   }
 
 }
@@ -104,7 +104,7 @@ app.get('/estimate-delivery', (req, res) => {
 
 function getShippingCost(weight, distance) {
   let result = weight * distance * 0.1;
-  return 'Shipping cost is  Rs.' +result.toString();
+  return result.toString();
 }
 
 app.get('/shipping-cost', (req, res) => {
@@ -122,7 +122,7 @@ app.get('/shipping-cost', (req, res) => {
 
 function getLoyaltyPoints(purchaseAmount) {
   let result = purchaseAmount * loyatyRate;
-  return 'Loyalty Points are  ' +result.toString();
+  return result.toString();
 }
 
 app.get('/loyalty-points', (req, res) => {
